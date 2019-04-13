@@ -14,5 +14,10 @@ body {
     color: #E6DBD0;
 }
 .card {
-    border: 2px solid #A69658;
+    border: 2px solid #795C5F;
+}
+.card-header {
+    background-color: #795C5F;
+    border-radius: 0;
+    color: white;
 }

@@ -5,3 +5,14 @@ Bone White: #E6DBD0
 Deep Taupe: #795C5F
 Tuscan Tan: #A69658
 */
+body {
+    background-color: #56A3A6;
+}
+#page-header {
+    background-color: #273043;
+    border-radius: 0;
+    color: #E6DBD0;
+}
+.card {
+    border: 2px solid #A69658;
+}

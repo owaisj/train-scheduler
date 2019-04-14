@@ -10,14 +10,13 @@ body {
 }
 #page-header {
     background-color: #273043;
-    border-radius: 0;
+    border: 2px solid #795C5F;
     color: #E6DBD0;
 }
-.card {
+.card-body {
     border: 2px solid #795C5F;
 }
 .card-header {
     background-color: #795C5F;
-    border-radius: 0;
     color: white;
 }

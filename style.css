@@ -8,6 +8,9 @@ Tuscan Tan: #A69658
 body {
     background-color: #56A3A6;
 }
+.container {
+    max-width: 950px;
+}
 #page-header {
     background-color: #273043;
     border: 2px solid #795C5F;

@@ -6,3 +6,4 @@ Owais Jamil
 - Firebase
 - jQuery
 - Bootstrap
+- Moment.js

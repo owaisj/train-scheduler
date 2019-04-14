@@ -19,7 +19,7 @@ $(document).ready(function(){
         console.log(destination);
         let trainFreq = $("#train-freq").val();
         console.log(trainFreq);
-        let firstTrain = $("#train-first").val();
+        let firstTrain = $("#train-first-hour").val() + ":" + $("#train-first-minute").val() + " " + $("#meridiem").val();
         console.log(firstTrain);
 
         trainLine.push({

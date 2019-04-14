@@ -81,9 +81,22 @@
 
                                 <label for="train-destination">Train Destination</label>
                                 <input class="form-control" id="train-destination" type="text" />
-
+                                
                                 <label for="train-first">First Train of the Day</label>
-                                <input class="form-control" id="train-first" type="text" />
+                                <div class="form-row">
+                                    <div class="col">
+                                        <input class="form-control" id="train-first-hour" type="number" min="1" max="12" />
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-control" id="train-first-minute" type="number" min="0" max="59" />
+                                    </div>
+                                    <div class="col col-2">
+                                        <select class="form-control" id="meridiem">
+                                            <option>AM</option>
+                                            <option>PM</option>
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <label for="train-freq">Frequency of Arrival</label>
                                 <input class="form-control" id="train-freq" type="number" />

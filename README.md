@@ -1,5 +1,5 @@
 # Train Scheduler
-A train scheduler app.
+A train schedule tracking app.
 ## Author
 Owais Jamil
 ## Technologies Used
@@ -7,3 +7,5 @@ Owais Jamil
 - jQuery
 - Bootstrap
 - Moment.js
+## Status
+Right now it's possible to appreciate the colors of the page and look at a list of your train lines.

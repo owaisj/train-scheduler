@@ -8,4 +8,4 @@ Owais Jamil
 - Bootstrap
 - Moment.js
 ## Status
-Right now it's possible to appreciate the colors of the page and look at a list of your train lines.
+Fully functional!

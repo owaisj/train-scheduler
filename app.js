@@ -32,16 +32,27 @@ $(document).ready(function(){
     })
 
     trainLine.on("child_added", function(snapshot){
-        //TODO: Time Calculations
-        //Take snapshot.val().first and convert to moment
+        let firstTrainTime = moment(snapshot.val().first, 'hh:mm A');
+        let currentTime = moment();
+        let difference = currentTime.diff(firstTrainTime, 'minutes');
+        let nextTrain = difference % snapshot.val().frequency;
+        let untilNextTrain = snapshot.val().frequency - nextTrain;
+        let nextTrainTime = moment().add(untilNextTrain, "minutes").format('hh:mm A');
+
+        console.log(firstTrainTime);
+        console.log(currentTime);
+        console.log(difference);
+        console.log(nextTrain);
+        console.log(untilNextTrain);
+        console.log(nextTrainTime);
 
         $("#train-schedule").append(
             `<tr>
                 <td>${snapshot.val().name}</td>
                 <td>${snapshot.val().destination}</td>
                 <td>${snapshot.val().frequency}</td>
-                <td>Next Arrival?</td>
-                <td>Minutes Away?</td>
+                <td>${nextTrainTime}</td>
+                <td>${untilNextTrain}</td>
             </tr>`
         )
     })

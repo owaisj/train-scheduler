@@ -55,5 +55,8 @@ $(document).ready(function(){
                 <td>${untilNextTrain}</td>
             </tr>`
         )
-    })
+    }, function (error) {
+        console.log("The read failed: " + error.code);
+    });
+    
 });

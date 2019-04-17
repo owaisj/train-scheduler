@@ -67,6 +67,7 @@ $(document).ready(function(){
     })
 
     $(document).on("click", ".refresh", function() {
+        //TODO: Can this be implemented with a setTimeout()?
         let childId = $(this).attr("id");
         trainLine.child(childId).once("value").then(function(snapshot){
             let firstTrainTime = moment(snapshot.val().first, 'hh:mm A');

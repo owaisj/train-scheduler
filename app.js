@@ -46,7 +46,11 @@ $(document).ready(function(){
                 <td>${snapshot.val().frequency}</td>
                 <td>${nextTrainTime}</td>
                 <td>${untilNextTrain}</td>
-                <td><i id="${snapshot.val().name}" class="fas fa-trash remove"></i></td>
+                <td>
+                    <button class="btn btn-light">
+                        <i id="${snapshot.val().name}" class="fas fa-trash remove"></i>
+                    </button>
+                </td>
             </tr>`
         )
     }, function (error) {

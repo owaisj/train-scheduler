@@ -50,6 +50,9 @@ $(document).ready(function(){
                     <button class="btn btn-light">
                         <i id="${snapshot.val().name}" class="fas fa-trash remove"></i>
                     </button>
+                    <button class="btn btn-light">
+                        <i id="${snapshot.val().name}" class="fas fa-sync refresh"></i>
+                    </button>
                 </td>
             </tr>`
         )
@@ -61,5 +64,34 @@ $(document).ready(function(){
         let childId = $(this).attr("id");
         trainLine.child(childId).set(null);
         $(`#${childId}-line`).remove();
+    })
+
+    $(document).on("click", ".refresh", function() {
+        let childId = $(this).attr("id");
+        trainLine.child(childId).once("value").then(function(snapshot){
+            let firstTrainTime = moment(snapshot.val().first, 'hh:mm A');
+            let currentTime = moment();
+            let difference = currentTime.diff(firstTrainTime, 'minutes');
+            let nextTrain = difference % snapshot.val().frequency;
+            let untilNextTrain = snapshot.val().frequency - nextTrain;
+            let nextTrainTime = moment().add(untilNextTrain, "minutes").format('hh:mm A');
+
+            $(`#${childId}-line`).empty()
+            .append(`
+                <td>${snapshot.val().name}</td>
+                <td>${snapshot.val().destination}</td>
+                <td>${snapshot.val().frequency}</td>
+                <td>${nextTrainTime}</td>
+                <td>${untilNextTrain}</td>
+                <td>
+                    <button class="btn btn-light">
+                        <i id="${snapshot.val().name}" class="fas fa-trash remove"></i>
+                    </button>
+                    <button class="btn btn-light">
+                        <i id="${snapshot.val().name}" class="fas fa-sync refresh"></i>
+                    </button>
+                </td>
+            `);
+        });
     })
 });

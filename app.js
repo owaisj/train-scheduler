@@ -50,6 +50,9 @@ $(document).ready(function(){
                     <button class="btn btn-light">
                         <i id="${snapshot.val().name}" class="fas fa-trash remove"></i>
                     </button>
+                    <button class="btn btn-light">
+                        <i id="${snapshot.val().name}" class="fas fa-sync refresh"></i>
+                    </button>
                 </td>
             </tr>`
         )
@@ -61,5 +64,27 @@ $(document).ready(function(){
         let childId = $(this).attr("id");
         trainLine.child(childId).set(null);
         $(`#${childId}-line`).remove();
+    })
+
+    $(document).on("click", ".refresh", function() {
+        let childId = $(this).attr("id");
+        trainLine.child(childId).once("value").then(function(snapshot){
+            $(`#${childId}-line`).empty()
+            .append(`
+                <td>${snapshot.val().name}</td>
+                <td>${snapshot.val().destination}</td>
+                <td>${snapshot.val().frequency}</td>
+                <td></td>
+                <td></td>
+                <td>
+                    <button class="btn btn-light">
+                        <i id="${snapshot.val().name}" class="fas fa-trash remove"></i>
+                    </button>
+                    <button class="btn btn-light">
+                        <i id="${snapshot.val().name}" class="fas fa-sync refresh"></i>
+                    </button>
+                </td>
+            `);
+        });
     })
 });

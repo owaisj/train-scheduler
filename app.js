@@ -22,7 +22,7 @@ $(document).ready(function(){
         let firstTrain = $("#train-first-hour").val() + ":" + $("#train-first-minute").val() + " " + $("#meridiem").val();
         console.log(firstTrain);
 
-        trainLine.push({
+        trainLine.child(name).set({
             "name": name,
             "destination": destination,
             "frequency": trainFreq,
@@ -39,24 +39,23 @@ $(document).ready(function(){
         let untilNextTrain = snapshot.val().frequency - nextTrain;
         let nextTrainTime = moment().add(untilNextTrain, "minutes").format('hh:mm A');
 
-        console.log(firstTrainTime);
-        console.log(currentTime);
-        console.log(difference);
-        console.log(nextTrain);
-        console.log(untilNextTrain);
-        console.log(nextTrainTime);
-
         $("#train-schedule").append(
-            `<tr>
+            `<tr id="${snapshot.val().name}-line">
                 <td>${snapshot.val().name}</td>
                 <td>${snapshot.val().destination}</td>
                 <td>${snapshot.val().frequency}</td>
                 <td>${nextTrainTime}</td>
                 <td>${untilNextTrain}</td>
+                <td><i id="${snapshot.val().name}" class="fas fa-trash remove"></i></td>
             </tr>`
         )
     }, function (error) {
         console.log("The read failed: " + error.code);
     });
     
+    $(document).on("click", ".remove", function() {
+        let childId = $(this).attr("id");
+        trainLine.child(childId).set(null);
+        $(`#${childId}-line`).remove();
+    })
 });

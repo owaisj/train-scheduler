@@ -31,7 +31,8 @@ $(document).ready(function(){
 
     })
 
-    trainLine.on("child_added", function(snapshot){
+    let createTable = function() {
+        trainLine.on("child_added", function(snapshot){
         let firstTrainTime = moment(snapshot.val().first, 'hh:mm A');
         let currentTime = moment();
         let difference = currentTime.diff(firstTrainTime, 'minutes');
@@ -39,7 +40,8 @@ $(document).ready(function(){
         let untilNextTrain = snapshot.val().frequency - nextTrain;
         let nextTrainTime = moment().add(untilNextTrain, "minutes").format('hh:mm A');
 
-        $("#train-schedule").append(
+        $("#train-schedule").empty()
+        .append(
             `<tr id="${snapshot.val().name}-line">
                 <td>${snapshot.val().name}</td>
                 <td>${snapshot.val().destination}</td>
@@ -54,11 +56,11 @@ $(document).ready(function(){
                         <i id="${snapshot.val().name}" class="fas fa-sync refresh"></i>
                     </button>
                 </td>
-            </tr>`
-        )
-    }, function (error) {
-        console.log("The read failed: " + error.code);
-    });
+            </tr>`)
+        }, function (error) {
+            console.log("The read failed: " + error.code);
+        });
+    };
     
     $(document).on("click", ".remove", function() {
         let childId = $(this).attr("id");
@@ -93,5 +95,21 @@ $(document).ready(function(){
                 </td>
             `);
         });
-    })
+    });
+
+    //Initial Call to Create Table On Page Load
+    createTable();
+
+    //Interval for Refresh of Table
+    let intervalID;
+    let rCounter = 0;
+    function tableRefresh() {
+        let temp = function() {
+            createTable();
+            rCounter++;
+            console.log(`This timeout has occurred ${rCounter} times`);
+        }
+        intervalID = setInterval(temp, 30000);
+    }
+    tableRefresh();
 });

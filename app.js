@@ -40,7 +40,7 @@ $(document).ready(function(){
         let untilNextTrain = snapshot.val().frequency - nextTrain;
         let nextTrainTime = moment().add(untilNextTrain, "minutes").format('hh:mm A');
 
-        $("#train-schedule").empty()
+        $("#train-schedule")
         .append(
             `<tr id="${snapshot.val().name}-line">
                 <td>${snapshot.val().name}</td>
@@ -105,9 +105,10 @@ $(document).ready(function(){
     let rCounter = 0;
     function tableRefresh() {
         let temp = function() {
+            $("#train-schedule").empty();
             createTable();
             rCounter++;
-            console.log(`This timeout has occurred ${rCounter} times`);
+            console.log(`This interval has occurred ${rCounter} times`);
         }
         intervalID = setInterval(temp, 30000);
     }

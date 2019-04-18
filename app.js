@@ -107,7 +107,7 @@ $(document).ready(function(){
         let temp = function() {
             createTable();
             rCounter++;
-            console.log(`This timeout has occurred ${rCounter} times`);
+            console.log(`This interval has occurred ${rCounter} times`);
         }
         intervalID = setInterval(temp, 30000);
     }

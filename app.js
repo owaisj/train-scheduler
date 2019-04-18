@@ -68,7 +68,7 @@ $(document).ready(function(){
         $(`#${childId}-line`).remove();
     })
 
-    let refresh = function() {
+    $(document).on("click", ".refresh", function() {
         let childId = $(this).attr("id");
         trainLine.child(childId).once("value").then(function(snapshot){
             let firstTrainTime = moment(snapshot.val().first, 'hh:mm A');
@@ -95,9 +95,8 @@ $(document).ready(function(){
                 </td>
             `);
         });
-    };
-    $(document).on("click", ".refresh", refresh);
-    
+    });
+
     //Initial Call to Create Table On Page Load
     createTable();
 

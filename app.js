@@ -66,7 +66,7 @@ $(document).ready(function(){
         $(`#${childId}-line`).remove();
     })
 
-    $(document).on("click", ".refresh", function() {
+    let refresh = function() {
         //TODO: Can this be implemented with a setTimeout()?
         let childId = $(this).attr("id");
         trainLine.child(childId).once("value").then(function(snapshot){
@@ -94,5 +94,6 @@ $(document).ready(function(){
                 </td>
             `);
         });
-    })
+    };
+    $(document).on("click", ".refresh", refresh);
 });

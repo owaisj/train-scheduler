@@ -110,7 +110,7 @@ $(document).ready(function(){
             rCounter++;
             console.log(`This interval has occurred ${rCounter} times`);
         }
-        intervalID = setInterval(temp, 10000);
+        intervalID = setInterval(temp, 30000);
     }
     tableRefresh();
 });

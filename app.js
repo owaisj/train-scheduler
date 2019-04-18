@@ -105,11 +105,12 @@ $(document).ready(function(){
     let rCounter = 0;
     function tableRefresh() {
         let temp = function() {
+            $("#train-schedule").empty();
             createTable();
             rCounter++;
             console.log(`This interval has occurred ${rCounter} times`);
         }
-        intervalID = setInterval(temp, 30000);
+        intervalID = setInterval(temp, 10000);
     }
     tableRefresh();
 });

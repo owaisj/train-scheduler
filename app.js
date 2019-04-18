@@ -40,7 +40,7 @@ $(document).ready(function(){
         let untilNextTrain = snapshot.val().frequency - nextTrain;
         let nextTrainTime = moment().add(untilNextTrain, "minutes").format('hh:mm A');
 
-        $("#train-schedule").empty()
+        $("#train-schedule")
         .append(
             `<tr id="${snapshot.val().name}-line">
                 <td>${snapshot.val().name}</td>

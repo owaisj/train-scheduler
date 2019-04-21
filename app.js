@@ -93,9 +93,6 @@ $(document).ready(function(){
         });
     });
 
-    //Initial Call to Create Table On Page Load
-    createTable();
-
     //Interval for Refresh of Table
     let intervalID;
     function tableRefresh() {
@@ -104,7 +101,11 @@ $(document).ready(function(){
             createTable();
         }
         intervalID = setInterval(temp, 30000);
-    }
-    
+    }    
+
+    //Create the table and refresh it
+    createTable();
     tableRefresh();
+
+    
 });

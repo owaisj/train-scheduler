@@ -14,13 +14,9 @@ $(document).ready(function(){
     $("#submit").on("click", (event) => {
         event.preventDefault();
         let name = $("#train-name").val();
-        console.log(name);
         let destination = $("#train-destination").val();
-        console.log(destination);
         let trainFreq = $("#train-freq").val();
-        console.log(trainFreq);
         let firstTrain = $("#train-first-hour").val() + ":" + $("#train-first-minute").val() + " " + $("#meridiem").val();
-        console.log(firstTrain);
 
         trainLine.child(name).set({
             "name": name,
@@ -102,15 +98,13 @@ $(document).ready(function(){
 
     //Interval for Refresh of Table
     let intervalID;
-    let rCounter = 0;
     function tableRefresh() {
         let temp = function() {
             $("#train-schedule").empty();
             createTable();
-            rCounter++;
-            console.log(`This interval has occurred ${rCounter} times`);
         }
         intervalID = setInterval(temp, 30000);
     }
+    
     tableRefresh();
 });

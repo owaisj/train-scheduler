@@ -23,7 +23,9 @@ $(document).ready(function(){
             "destination": destination,
             "frequency": trainFreq,
             "first": firstTrain
-        })
+        });
+
+        $("#train-form").trigger("reset");
 
     })
 
